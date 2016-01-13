@@ -33,14 +33,13 @@ func main() {
 		flag.CommandLine.SetOutput(stdout)
 		flag.PrintDefaults()
 
-		help := "\nCommands:\n"
+		fmt.Fprintf(stdout, "\nCommands:\n")
 
 		for _, cmd := range dockerCommands {
-			help += fmt.Sprintf("    %-10.10s%s\n", cmd.Name, cmd.Description)
+			fmt.Fprintf(stdout, "    %-10.10s%s\n", cmd.Name, cmd.Description)
 		}
 
-		help += "\nRun 'docker COMMAND --help' for more information on a command."
-		fmt.Fprintf(stdout, "%s\n", help)
+		fmt.Fprintf(stdout, "\nRun 'docker COMMAND --help' for more information on a command.\n")
 	}
 
 	flag.Parse()
